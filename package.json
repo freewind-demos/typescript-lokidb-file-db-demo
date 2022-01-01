@@ -6,5 +6,9 @@
     "@types/node": "13.7.7",
     "ts-node": "8.6.2",
     "typescript": "3.8.3"
+  },
+  "dependencies": {
+    "@lokidb/fs-storage": "2.1.0",
+    "@lokidb/loki": "2.1.0"
   }
 }
