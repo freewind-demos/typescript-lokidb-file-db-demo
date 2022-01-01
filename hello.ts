@@ -6,17 +6,12 @@ type Post = {
 }
 
 async function hello() {
-  FSStorage.register();
+  // FSStorage.register();
   const db = new LokiDb("db/db.json");
   await db.initializePersistence({
-    adapter: new FSStorage()
+    adapter: new FSStorage(),
+    autoload: true
   });
-
-  try {
-    await db.loadDatabase();
-  } catch (error) {
-    console.error("### loadDatabase error", error);
-  }
 
   const posts = db.addCollection<Post>('posts');
 
@@ -30,7 +25,9 @@ async function hello() {
   posts.update(hello3);
 
   console.log("### posts", JSON.stringify(posts.find(), null, 4))
+
   await db.saveDatabase();
+
 
   await db.close();
 
